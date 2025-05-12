@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.android.volley.Request
 import com.android.volley.Response
@@ -13,10 +12,10 @@ import com.android.volley.toolbox.Volley
 import com.example.finalProject.R
 import com.google.android.material.textfield.TextInputEditText
 
-class LoginUser :AppCompatActivity() {
+class MainActivity :AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
+        setContentView(R.layout.activity_main)
         val switchToCreateActivity: Button = findViewById<Button>(R.id.createUser)
         val switchToPreferenceActivity: Button = findViewById<Button>(R.id.login)
         var userName: TextInputEditText = findViewById<TextInputEditText>(R.id.enterUser)
@@ -27,7 +26,6 @@ class LoginUser :AppCompatActivity() {
         switchToPreferenceActivity.setOnClickListener(View.OnClickListener { switchpActivities() })
 
 
-        println(getIntent().getStringExtra("page"))
 
     }
 
@@ -39,18 +37,23 @@ class LoginUser :AppCompatActivity() {
         startActivity(switchActivityIntent)
     }
     private fun switchpActivities() {
+        println("I'm totally happening")
         var userName: TextInputEditText = findViewById<TextInputEditText>(R.id.enterUser)
-        val url = String.format("http://127.0.0.1:5000/login/%s",userName.toString())
+        val url = String.format("http://127.0.0.1:5000/login/%s",userName.getText())
 
         val queue = Volley.newRequestQueue(this)
         val jsonObjectRequest = JsonObjectRequest(Request.Method.GET, url, null,
             Response.Listener { response ->
+
                 userName.setText("Response: %s".format(response.toString()))
             },
             Response.ErrorListener { error ->
-                userName.setText("user not found")
+                userName.setText(url)
+//                userName.setText("user not found")
             }
+
         )
+        queue.add(jsonObjectRequest)
 
 //        val switchActivityIntent: Intent = Intent(
 //            this,
