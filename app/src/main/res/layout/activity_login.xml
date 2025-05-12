@@ -1,58 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
-
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
         android:layout_width="409dp"
-        android:layout_height="354dp"
+        android:layout_height="729dp"
         android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="1dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text=" Member Login" />
+            android:text="login below" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/enterUser"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="username" />
+                android:hint="enter Username" />
 
             <Button
-                android:id="@+id/button"
-                android:layout_width="match_parent"
-                android:layout_height="77dp"
-                android:layout_weight="1"
-                android:text="Login" />
-
-            <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/login"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Not yet a member? Create an account by clicking the button below!" />
+                android:shape="rectangle"
+
+                android:text="login" />
 
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/createUser"
+                style="@style/Widget.AppCompat.Button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Create User" />
+                android:shape="rectangle"
+                android:text="create new user" />
         </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

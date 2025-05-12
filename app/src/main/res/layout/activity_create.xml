@@ -11,7 +11,6 @@
         android:layout_marginStart="1dp"
         android:layout_marginEnd="1dp"
         android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -30,7 +29,9 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="username" />
+                android:hint="username"
+                android:id="@+id/inputUsername"
+                />
 
             <TextView
                 android:id="@+id/textView7"
@@ -39,43 +40,17 @@
                 android:layout_weight="1"
                 android:text="username exists" />
         </com.google.android.material.textfield.TextInputLayout>
+        <Button
+            android:id="@+id/createUser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Create new user"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:layout_editor_absoluteX="160dp" />
+
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="419dp"
-        android:layout_height="63dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/button10"
-        tools:layout_editor_absoluteX="-9dp">
 
-        <Button
-            android:id="@+id/button3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Flexibility" />
 
-        <Button
-            android:id="@+id/button4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Strength" />
 
-        <Button
-            android:id="@+id/button9"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Cardio" />
-    </LinearLayout>
-
-    <Button
-        android:id="@+id/button10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Create new user"
-        app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_editor_absoluteX="160dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

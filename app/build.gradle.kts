@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+
 }
 
 android {
@@ -37,9 +38,7 @@ android {
 
 dependencies {
 
-    val room_version = "2.7.1"
-
-    implementation("androidx.room:room-runtime:$room_version")
+    implementation("com.android.volley:volley:1.2.1")
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
