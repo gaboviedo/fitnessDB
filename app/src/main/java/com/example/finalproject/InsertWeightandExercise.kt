@@ -1,5 +1,6 @@
 package com.example.finalproject
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -9,10 +10,12 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.android.volley.Request
 import com.android.volley.Response
+import com.android.volley.VolleyError
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import com.example.finalProject.R
 import com.google.android.material.textfield.TextInputEditText
+import org.json.JSONArray
 
 class InsertWeightandExercise : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,9 +34,51 @@ class InsertWeightandExercise : AppCompatActivity() {
         var equipmentInput: EditText = findViewById<EditText>(R.id.equipment)
 
 
-        logoutBtn.setOnClickListener(View.OnClickListener { switchLActivities() })
-        viewStatsBtn.setOnClickListener(View.OnClickListener { switchVSActivities(username) })
-        startExercise.setOnClickListener(View.OnClickListener { switchVEActivities(username) })
+        logoutBtn.setOnClickListener(View.OnClickListener {
+            switchLActivities() })
+        viewStatsBtn.setOnClickListener(View.OnClickListener {
+            switchVSActivities(username, object:VSActivityCallback {
+                override fun onSuccess(
+                    switchActivityIntent: Intent,
+                    s1: JSONArray,
+                    s2: JSONArray,
+                    s3: String
+                ) {
+                    println("Switching context")
+                    switchActivityIntent.putExtra("desc", s1.toString())
+                    switchActivityIntent.putExtra("title", s2.toString())
+                    switchActivityIntent.putExtra("username", s3)
+                    startActivity(switchActivityIntent)
+                }
+            })
+        })
+        startExercise.setOnClickListener(View.OnClickListener {
+            switchVEActivities(username, object:VSActivityCallback {
+                override fun onSuccess(
+                    switchActivityIntent: Intent,
+                    s1: JSONArray,
+                    s2: JSONArray,
+                    s3: String
+                ) {
+                    println("Switching context")
+                    val ans1 : ArrayList<String> = ArrayList<String>();
+                    for(i in 0..(s1.length()-1)) {
+                        ans1.add(s1.get(i).toString())
+                    }
+                    val ans2 : ArrayList<String> = ArrayList<String>();
+                    for(i in 0..(s2.length()-1)){
+                        ans2.add(s2.get(i).toString())
+                    }
+                    switchActivityIntent.putExtra("desc", ans1)
+                    switchActivityIntent.putExtra("title", ans2)
+                    switchActivityIntent.putExtra("username", s3)
+                    startActivity(switchActivityIntent)
+                }
+            }
+
+
+
+            ) })
 
     }
 //    todo:test these two funs
@@ -54,22 +99,39 @@ class InsertWeightandExercise : AppCompatActivity() {
         )
         queue.add(jsonObjectRequest)
     }
-    private fun receivePrefData(username:String):Pair<String, String>  {
+    private fun switchLActivities() {
+        val switchActivityIntent: Intent = Intent(
+            this,
+            MainActivity::class.java
+        )
 
+        startActivity(switchActivityIntent)
+    }
+
+    interface VSActivityCallback {
+        fun onSuccess(intent: Intent, s1:JSONArray, s2:JSONArray, s3:String)
+        //fun onError(error: VolleyError )
+    }
+
+    private fun switchVSActivities(username:String, callback:VSActivityCallback) {
         var levelInput: EditText = findViewById<EditText>(R.id.level)
         var exTypeInput: EditText = findViewById<EditText>(R.id.ex_type)
         var muscleGroupInput: EditText = findViewById<EditText>(R.id.muscle_group)
         var equipmentInput: EditText = findViewById<EditText>(R.id.equipment)
+        updateWeightData(username)
+        val switchActivityIntent: Intent = Intent(
+            this,
+            ViewStats::class.java
+        )
 
-        var s1:String=""
-        var s2:String=""
         val url = String.format("http://10.0.2.2:5000/log-setting/?user_name=%s&muscle_group=%s&equipment=%s&ex_type=%s&level=%s",username,muscleGroupInput.getText(),equipmentInput.getText(),exTypeInput.getText(),levelInput.getText())
         val queue = Volley.newRequestQueue(this)
         val jsonObjectRequest = JsonObjectRequest(
             Request.Method.GET, url, null,
             Response.Listener { response ->
-                s1 = response.getJSONObject("desc").toString()
-                s2 = response.getJSONObject("title").toString()
+                println(response.get("desc"))
+                callback.onSuccess(switchActivityIntent, response.getJSONArray("desc"),response.getJSONArray("title"),username)
+
             },
             Response.ErrorListener { error ->
                 levelInput.setText(url)
@@ -77,42 +139,36 @@ class InsertWeightandExercise : AppCompatActivity() {
             }
         )
         queue.add(jsonObjectRequest)
-        println("this is s1")
-        println(s1)
-        return Pair(s1,s2)
-    }
-    private fun switchLActivities() {
-        val switchActivityIntent: Intent = Intent(
-            this,
-            MainActivity::class.java
-        )
-        startActivity(switchActivityIntent)
+
     }
 
-    private fun switchVSActivities(username:String) {
-        receivePrefData(username)
-        updateWeightData(username)
-        val switchActivityIntent: Intent = Intent(
-            this,
-            ViewStats::class.java
-        )
-        switchActivityIntent.putExtra("username",username)
-        startActivity(switchActivityIntent)
-    }
-
-    private fun switchVEActivities(username:String) {
-        var el = receivePrefData(username)
+    private fun switchVEActivities(username:String, callback:VSActivityCallback) {
         updateWeightData(username)
         val switchActivityIntent: Intent = Intent(
             this,
             ViewExercise::class.java
         )
-        switchActivityIntent.putExtra("username",username)
-        switchActivityIntent.putExtra("exercise titles",el.first)
-        switchActivityIntent.putExtra("exercise description",el.second)
+        var levelInput: EditText = findViewById<EditText>(R.id.level)
+        var exTypeInput: EditText = findViewById<EditText>(R.id.ex_type)
+        var muscleGroupInput: EditText = findViewById<EditText>(R.id.muscle_group)
+        var equipmentInput: EditText = findViewById<EditText>(R.id.equipment)
+        val url = String.format("http://10.0.2.2:5000/log-setting/?user_name=%s&muscle_group=%s&equipment=%s&ex_type=%s&level=%s",username,muscleGroupInput.getText(),equipmentInput.getText(),exTypeInput.getText(),levelInput.getText())
+        val queue = Volley.newRequestQueue(this)
+        val jsonObjectRequest = JsonObjectRequest(
+            Request.Method.GET, url, null,
+            Response.Listener { response ->
+                callback.onSuccess(switchActivityIntent, response.getJSONArray("desc"),response.getJSONArray("title"),username)
 
-        startActivity(switchActivityIntent)
+            },
+            Response.ErrorListener { error ->
+                levelInput.setText(url)
+                println(error)
+            }
+        )
+        queue.add(jsonObjectRequest)
+
     }
+
 
 
 }

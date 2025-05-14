@@ -59,6 +59,7 @@ class MainActivity :AppCompatActivity() {
             InsertWeightandExercise::class.java
         )
         switchActivityIntent.putExtra("username",userName.getText().toString())
+
         startActivity(switchActivityIntent)
     }
 

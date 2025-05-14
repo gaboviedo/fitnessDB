@@ -39,27 +39,34 @@
             android:id="@+id/ex_desc"
             android:layout_width="match_parent"
             android:layout_height="350dp"
-            android:text="exercise description" />
+            android:text="exercise description"
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/elapsedInfo"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="sets elapsed: 0" />
+            android:fontFamily="sans-serif-black"
+            android:text="sets elapsed: 0"
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/remainingEx"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="number of exercises remaining:" />
+            android:fontFamily="sans-serif-black"
+            android:text="number of exercises remaining:"
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/exTitle"
             android:layout_width="match_parent"
             android:layout_height="49dp"
-            android:text="current exercise name" />
+            android:fontFamily="sans-serif-black"
+            android:text="current exercise name"
+            android:textSize="16sp" />
     </LinearLayout>
 
     <LinearLayout
