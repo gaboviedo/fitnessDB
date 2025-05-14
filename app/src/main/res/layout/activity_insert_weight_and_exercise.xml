@@ -7,31 +7,14 @@
 
     <LinearLayout
         android:layout_width="418dp"
-        android:layout_height="114dp"
+        android:layout_height="90dp"
         android:layout_marginTop="1dp"
         android:layout_marginBottom="1dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <Button
-            android:id="@+id/weightbtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:shape="rectangle"
-            android:text="Weight" />
-
-        <Button
-            android:id="@+id/preferencebtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:shape="rectangle"
-            android:text="Set Preferences" />
-    </LinearLayout>
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <LinearLayout
         android:id="@+id/linearLayout3"
@@ -45,11 +28,46 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
 
-        <TextView
-            android:id="@+id/textView2"
+        <EditText
+            android:id="@+id/inputWeight"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:layout_height="77dp"
+            android:ems="10"
+            android:hint="input weight"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/level"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:ems="10"
+            android:hint="beginner/intermediate"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/ex_type"
+            android:layout_width="match_parent"
+            android:layout_height="104dp"
+            android:ems="10"
+            android:hint="strength/plyometrics/cardio/stretching/powerlifting/strogman/olympic weightlifting"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/muscle_group"
+            android:layout_width="match_parent"
+            android:layout_height="109dp"
+            android:ems="10"
+            android:hint="upper/lower"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/equipment"
+            android:layout_width="match_parent"
+            android:layout_height="116dp"
+            android:ems="10"
+            android:hint="body only/other"
+            android:inputType="text" />
+
     </LinearLayout>
 
     <LinearLayout
@@ -66,28 +84,28 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
 
-        <Button xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/button11"
+        <Button
+            android:id="@+id/logout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:shape="rectangle"
-            android:text="Button" />
+            android:text="logout" />
 
-        <Button xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/button12"
+        <Button
+            android:id="@+id/viewStats"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:shape="rectangle"
-            android:text="Button" />
+            android:text="view stats" />
 
-        <Button xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/button13"
+        <Button
+            android:id="@+id/exerciseStart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:shape="rectangle"
-            android:text="Button" />
+            android:text="Start exercise!" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

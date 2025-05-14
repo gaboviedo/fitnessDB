@@ -14,22 +14,10 @@
         android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout7"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="TextView" />
-
-        <TextView
-            android:id="@+id/textView5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="TextView" />
     </LinearLayout>
 
     <LinearLayout
@@ -43,14 +31,35 @@
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout6"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout5">
 
         <TextView
-            android:id="@+id/textView8"
+            android:id="@+id/ex_desc"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:layout_height="350dp"
+            android:text="exercise description" />
+
+        <TextView
+            android:id="@+id/elapsedInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="sets elapsed: 0" />
+
+        <TextView
+            android:id="@+id/remainingEx"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="number of exercises remaining:" />
+
+        <TextView
+            android:id="@+id/exTitle"
+            android:layout_width="match_parent"
+            android:layout_height="49dp"
+            android:text="current exercise name" />
     </LinearLayout>
 
     <LinearLayout
@@ -67,20 +76,27 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout7">
 
-        <Button xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/button14"
+        <Button
+            android:id="@+id/nextSet"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:shape="rectangle"
-            android:text="Button" />
+            android:text="next set" />
 
-        <Button xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/button15"
+        <Button
+            android:id="@+id/nextEx"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:shape="rectangle"
-            android:text="Button" />
+            android:text="next exercise" />
+
+        <Button
+            android:id="@+id/exitbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="exit" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

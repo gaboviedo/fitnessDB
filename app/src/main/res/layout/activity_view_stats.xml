@@ -16,21 +16,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <Button xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/button5"
+        <Button
+            android:id="@+id/showWeight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:shape="rectangle"
-            android:text="Button" />
+            android:text="weight data" />
 
-        <Button xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/button6"
+        <Button
+            android:id="@+id/lesson"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:shape="rectangle"
-            android:text="Button" />
+            android:text="lesson data" />
     </LinearLayout>
 
     <LinearLayout
@@ -49,8 +49,8 @@
         <TextView
             android:id="@+id/textView3"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:layout_height="327dp"
+            android:text="placeholder for data" />
     </LinearLayout>
 
     <LinearLayout
@@ -67,28 +67,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout10">
 
-        <Button xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/button7"
+        <Button
+            android:id="@+id/logout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:shape="rectangle"
-            android:text="Button" />
+            android:text="logout" />
 
-        <Button xmlns:android="http://schemas.android.com/apk/res/android"
+        <Button
             android:id="@+id/button8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:shape="rectangle"
-            android:text="Button" />
+            android:text="log weight or preference" />
 
-        <Button xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/button9"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:shape="rectangle"
-            android:text="Button" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

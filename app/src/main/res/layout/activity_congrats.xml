@@ -23,6 +23,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Congratulations!!! You did it!" />
+
+        <com.android.volley.toolbox.NetworkImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="537dp"
+            tools:srcCompat="@tools:sample/avatars" />
     </LinearLayout>
 
     <LinearLayout

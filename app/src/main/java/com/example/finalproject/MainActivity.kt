@@ -37,29 +37,29 @@ class MainActivity :AppCompatActivity() {
         startActivity(switchActivityIntent)
     }
     private fun switchpActivities() {
-        println("I'm totally happening")
         var userName: TextInputEditText = findViewById<TextInputEditText>(R.id.enterUser)
-        val url = String.format("http://127.0.0.1:5000/login/%s",userName.getText())
+        val url = String.format("http://10.0.2.2:5000/login/%s",userName.getText())
 
         val queue = Volley.newRequestQueue(this)
         val jsonObjectRequest = JsonObjectRequest(Request.Method.GET, url, null,
+
             Response.Listener { response ->
 
                 userName.setText("Response: %s".format(response.toString()))
             },
             Response.ErrorListener { error ->
-                userName.setText(url)
-//                userName.setText("user not found")
+                userName.setText("user not found")
             }
 
         )
         queue.add(jsonObjectRequest)
 
-//        val switchActivityIntent: Intent = Intent(
-//            this,
-//            InsertWeightandExercise::class.java
-//        )
-//        startActivity(switchActivityIntent)
+        val switchActivityIntent: Intent = Intent(
+            this,
+            InsertWeightandExercise::class.java
+        )
+        switchActivityIntent.putExtra("username",userName.getText().toString())
+        startActivity(switchActivityIntent)
     }
 
 }
