@@ -54,11 +54,14 @@ class ViewExercise : AppCompatActivity()  {
         var remaining:TextView = findViewById<TextView>(R.id.remainingEx)
         var currTitle:TextView = findViewById<TextView>(R.id.exTitle)
         var descTextEx:TextView = findViewById<TextView>(R.id.ex_desc)
+        var elapsed:TextView = findViewById<TextView>(R.id.elapsedInfo)
         currTitle.setText(titleList.get(index))
         descTextEx.setText(descriptions.get(index).toString())
         remaining.setText("exercises remaining")
         remaining.append(descriptions.size.minus(index).toString())
         index++
+        elapsed.setText("sets elapsed: 0")
+
 
 
 

@@ -87,7 +87,7 @@ class InsertWeightandExercise : AppCompatActivity() {
         val url = String.format("http://10.0.2.2:5000/log-setting/?user_name=%s&weight=%s",username,weightInput.getText())
         val queue = Volley.newRequestQueue(this)
         val jsonObjectRequest = JsonObjectRequest(
-            Request.Method.POST, url, null,
+            Request.Method.PUT, url, null,
             Response.Listener { response ->
                 weightInput.setText("Response: %s".format(response.toString()))
 

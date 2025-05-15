@@ -45,6 +45,7 @@ class ViewStats : AppCompatActivity()  {
         )
         startActivity(switchActivityIntent)
     }
+
     private  fun showWeightData(username:String){
         var datapw:TextView = findViewById<TextView>(R.id.textView3)
         val url = String.format("http://10.0.2.2:5000/stats/weight/?user_name=%s",username)
